@@ -115,7 +115,8 @@ table, th, td {
         <th colspan="2">Ungebaut</th>
     </tr>
 </table>
-    <button id="button1" class="button">Neue</button>
+    <button id="saveButton">Enregistrer le tableau</button>
+    <button id="button1">Neue</button>
 <script>
 
     var startzeit = localStorage.getItem('Startzeit');
@@ -167,6 +168,60 @@ function openPopup() {
 
         populateTable();
 
+function saveTableData() {
+    var table = document.getElementById('myTable');
+    var rowData = [];
+
+    // Parcourez chaque ligne du tableau
+    for (var i = 0; i < table.rows.length; i++) {
+        var row = table.rows[i];
+        var cellData = [];
+
+        // Parcourez chaque cellule de la ligne
+        for (var j = 0; j < row.cells.length; j++) {
+            var cell = row.cells[j];
+            cellData.push(cell.textContent);
+        }
+
+        rowData.push(cellData);
+    }
+
+    // Convertissez les données en JSON
+    var jsonData = JSON.stringify(rowData);
+
+    // Sauvegardez les données dans le stockage local
+    localStorage.setItem('tableData', jsonData);
+}
+
+// Fonction pour charger les données du stockage local et remplir le tableau
+function loadTableData() {
+    var jsonData = localStorage.getItem('tableData');
+
+    if (jsonData) {
+        var tableData = JSON.parse(jsonData);
+        var table = document.getElementById('myTable');
+
+        // Remplissez le tableau avec les données chargées
+        for (var i = 0; i < tableData.length; i++) {
+            var rowData = tableData[i];
+            var row = table.insertRow();
+
+            for (var j = 0; j < rowData.length; j++) {
+                var cellData = rowData[j];
+                var cell = row.insertCell();
+                cell.textContent = cellData;
+            }
+        }
+    }
+}
+
+loadTableData();
+
+var saveButton = document.getElementById('saveButton');
+saveButton.addEventListener('click', function () {
+    saveTableData();
+
+    
 </script>
 </body>
 </html>
