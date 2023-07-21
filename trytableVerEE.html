@@ -118,191 +118,57 @@ table, th, td {
         <th colspan="2">Ungebaut</th>
     </tr>
   </table>
+  <button id="button1" class="button">Neue</button>
 <script>
-    
-    var datum = localStorage.getItem('Datum');
+  
     var startzeit = localStorage.getItem('Startzeit');
     var endzeit = localStorage.getItem('Endzeit');
-    var pa = localStorage.getItem('PA');
-    var stuck = localStorage.getItem('Stuckzahl');
-    var count1 = localStorage.getItem('button1');
-    var count2 = localStorage.getItem('button2');
-    var count3 = localStorage.getItem('button3');
-    var count4 = localStorage.getItem('button4');
-    var count5 = localStorage.getItem('button5');
-    var count6 = localStorage.getItem('button6');
-    var count7 = localStorage.getItem('button7');
-    var count8 = localStorage.getItem('button8');
-    var count9 = localStorage.getItem('button9');
-    var count10 = localStorage.getItem('button10');
-    var count11 = localStorage.getItem('button11');
-    var count12 = localStorage.getItem('button12');
-    var count13 = localStorage.getItem('button13');
-    var count14 = localStorage.getItem('button14');
-    var count15 = localStorage.getItem('button15');
-    var count16 = localStorage.getItem('button16');
-    var count17 = localStorage.getItem('button17');
-    var count18 = localStorage.getItem('button18');
-    var count19 = localStorage.getItem('button19');
-    var count20 = localStorage.getItem('button20');
-    var count21 = localStorage.getItem('button21');
-    var count22 = localStorage.getItem('button22');
-    var count23 = localStorage.getItem('button23');
-    var count24 = localStorage.getItem('button24');
-    var count25 = localStorage.getItem('button25');
-    
     var uhrzeit = startzeit + " / " + endzeit;
+    localStorage.setItem("Uhrzeit", uhrzeit)
+  
+    function openPopup() {
+        window.open("Neue.html","popupwindow","width=1920, height=1080");
+    }
+  
+        window.addEventListener("DOMContentLoaded", function() {
+        var button1 = document.getElementById("button1");
+          
+        button1.addEventListener("dblclick", function() {
+                openPopup();
+            })
+        });
 
-    function createAndFillCell(targetRow, content) {
-        var newCell = targetRow.insertCell();
-        newCell.textContent = content;
-    }
+        var dataKeys = ['Datum', 'Uhrzeit', 'PA', 'Stuckzahl'];
+        var buttonKeys = ['button1', 'button2', 'button3', 'button4', 'button5', 'button6', 'button7', 'button8', 'button9', 'button10', 'button11', 'button12', 'button13', 'button14', 'button15', 'button16', 'button17', 'button18', 'button19', 'button20', 'button21', 'button22', 'button23', 'button24', 'button25'];
 
-    if (datum) {
+        function createAndFillCell(targetRow, content) {
+            var newCell = targetRow.insertCell();
+            newCell.textContent = content;
+        }
+
+        function populateTable() {
         var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[0];
-        createAndFillCell(targetRow, datum);
-    }
-    if (uhrzeit) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[1];
-        createAndFillCell(targetRow, uhrzeit);
-    }
-    if (pa) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[2];
-        createAndFillCell(targetRow, pa);
-    }
-    if (stuck) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[3];
-        createAndFillCell(targetRow, stuck);
-    }
-    if (count1) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[4];
-        createAndFillCell(targetRow, count1);
-    }
-    if (count2) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[5];
-        createAndFillCell(targetRow, count2);
-    }
-    if (count3) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[6];
-        createAndFillCell(targetRow, count3);
-    }
-    if (count4) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[7];
-        createAndFillCell(targetRow, count4);
-    }
-    if (count5) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[8];
-        createAndFillCell(targetRow, count5);
-    }
-    if (count6) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[9];
-        createAndFillCell(targetRow, count6);
-    }
-    if (count7) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[10];
-        createAndFillCell(targetRow, count7);
-    }
-    if (count8) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[11];
-        createAndFillCell(targetRow, count8);
-    }
-    if (count9) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[12];
-        createAndFillCell(targetRow, count9);
-    }
-    if (count10) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[13];
-        createAndFillCell(targetRow, count10);
-    }
-    if (count11) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[14];
-        createAndFillCell(targetRow, count11);
-    }
-    if (count12) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[15];
-        createAndFillCell(targetRow, count12);
-    }
-    if (count13) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[16];
-        createAndFillCell(targetRow, count13);
-    }
-    if (count14) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[17];
-        createAndFillCell(targetRow, count14);
-    }
-    if (count15) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[18];
-        createAndFillCell(targetRow, count15);
-    }
-    if (count16) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[19];
-        createAndFillCell(targetRow, count16);
-    }
-    if (count17) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[20];
-        createAndFillCell(targetRow, count17);
-    }
-    if (count18) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[21];
-        createAndFillCell(targetRow, count18);
-    }
-    if (count19) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[22];
-        createAndFillCell(targetRow, count19);
-    }
-        if (count20) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[23];
-        createAndFillCell(targetRow, count20);
-    }
-    if (count21) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[24];
-        createAndFillCell(targetRow, count21);
-    }
-    if (count22) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[25];
-        createAndFillCell(targetRow, count22);
-    }
-    if (count23) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[26];
-        createAndFillCell(targetRow, count23);
-    }
-    if (count24) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[27];
-        createAndFillCell(targetRow, count24);
-    }
-    if (count25) {
-        var table = document.getElementById('VEREETable');
-        var targetRow = table.rows[28];
-        createAndFillCell(targetRow, count25);
-    }
+
+            for (var i = 0; i < dataKeys.length; i++) {
+                var dataKey = dataKeys[i];
+                var dataValue = localStorage.getItem(dataKey);
+                if (dataValue) {
+                    var targetRow = table.rows[i];
+                    createAndFillCell(targetRow, dataValue);
+                }
+            }
+
+            for (var i = 0; i < buttonKeys.length; i++) {
+                var buttonKey = buttonKeys[i];
+                var buttonValue = localStorage.getItem(buttonKey);
+                if (buttonValue) {
+                    var targetRow = table.rows[i + dataKeys.length];
+                    createAndFillCell(targetRow, buttonValue);
+                }
+            }
+        }
+
+        populateTable();
 
 </script>
 </body>
