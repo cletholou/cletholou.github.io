@@ -118,6 +118,49 @@ table, th, td {
     <button id="saveButton">Enregistrer le tableau</button>
     <button id="button1">Neue</button>
 <script>
+            function getStoredData() {
+            var storedData = localStorage.getItem('tableData');
+            return storedData ? JSON.parse(storedData) : { rows: [] };
+        }
+
+        // Fonction pour enregistrer les données dans le localStorage
+        function saveDataToLocalStorage(data) {
+            localStorage.setItem('tableData', JSON.stringify(data));
+        }
+
+        // Obtenez les données existantes (le cas échéant) du localStorage
+        var tableData = getStoredData();
+
+        // Obtenez le tableau HTML et les lignes
+        var table = document.getElementById('HORTable');
+        var rows = table.getElementsByTagName('tr');
+
+        // Parcourez les lignes et ajoutez les nouvelles données au tableau
+        for (var i = 0; i < rows.length; i++) {
+            var rowCells = rows[i].getElementsByTagName('td');
+            var rowData = [];
+
+            for (var j = 0; j < rowCells.length; j++) {
+                rowData.push(rowCells[j].textContent.trim());
+            }
+
+            // Vérifiez si la ligne existe déjà dans le tableau
+            var existingRow = tableData.rows[i];
+            if (existingRow) {
+                // Si la ligne existe, mettez à jour les valeurs manquantes (colonnes vides)
+                for (var j = 0; j < rowData.length; j++) {
+                    if (rowData[j] !== "") {
+                        existingRow[j] = rowData[j];
+                    }
+                }
+            } else {
+                // Si la ligne n'existe pas, ajoutez la nouvelle ligne au tableau
+                tableData.rows.push(rowData);
+            }
+        }
+
+        // Enregistrez les données mises à jour dans le localStorage
+        saveDataToLocalStorage(tableData);
 
     var startzeit = localStorage.getItem('Startzeit');
     var endzeit = localStorage.getItem('Endzeit');
