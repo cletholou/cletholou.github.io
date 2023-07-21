@@ -117,6 +117,12 @@ table, th, td {
 </table>
     <button id="button1" class="button">Neue</button>
 <script>
+
+    var startzeit = localStorage.getItem('Startzeit');
+    var endzeit = localStorage.getItem('Endzeit');
+    var uhrzeit = startzeit + " / " + endzeit;
+    localStorage.setItem("Uhrzeit", uhrzeit)
+    
 function openPopup() {
         window.open("Neue.html","popupwindow","width=1920, height=1080");
     }
