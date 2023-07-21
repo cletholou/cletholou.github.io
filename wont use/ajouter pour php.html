@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <script> 
+    id = button.id; 
+        $.ajax({
+          url: "script.php",
+          method: "POST",
+          data: { id: id, count: count },
+          success: function(response) {
+            console.log("Données envoyées au serveur avec succès !");
+          },
+          error: function() {
+            console.log("Une erreur s'est produite lors de l'envoi des données au serveur.");
+          }
+        });
+    </script>
+</html>

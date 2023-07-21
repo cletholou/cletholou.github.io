@@ -1,0 +1,367 @@
+npm install excel4node
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+
+<h2>Fehlt table</h2>
+
+<table id="HORTable">
+    <tr>
+        <th colspan="2">Datum</th>
+    </tr>
+    <tr>
+        <th colspan="2">Uhrzeit</th>
+    </tr>
+    <tr>
+        <th colspan="2">P.A.</th>
+    </tr>
+    <tr>
+        <th colspan="2">Stuckzahl</th>
+    </tr>
+    <tr>
+        <th>2 Kontakthalter</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th rowspan="2">16 M6x12 DIN Schraube</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <td>drehmoment</td>
+    </tr>
+    <tr>
+        <th>13 U-Scheibe</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th>15 M6x25 DIN Schraube</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th>11 D-Scheibe</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th>12 C-Scheibe</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th>7 Bultescheibe</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th rowspan="2">5 Stecker</th> 
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <td>falsh montiert</td>
+    </tr>
+    <tr>
+        <th rowspan="2">6 Clip</th> 
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <td>falsh montiert</td>
+    </tr>
+    <tr>
+        <th>4 Schlosshalter</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th rowspan="2">8 EJOT Schraube</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <td>drehmoment</td>
+    </tr>
+    <tr>
+        <th>14 M6x16 DIN Schraube</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th>11 D-Scheibe</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th>12 C-Scheibe</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th>7 Bültescheibe</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <th rowspan="2">18 M5 ISO Schraube</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        ><td>drehmoment</td>
+    </tr>
+    <tr>
+        <th rowspan="2">10 Plug</th>
+        <td>fehlt</td>
+    </tr>
+    <tr>
+        <td>falsh montiert</td>
+    </tr>
+    <tr>
+        <th colspan="2">Ungebaut</th>
+    </tr>
+</table>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script>
+
+      // Fonction pour récupérer les données du localStorage
+      function getStoredData() {
+            var storedData = localStorage.getItem('tableData');
+            return storedData ? JSON.parse(storedData) : { rows: [] };
+        }
+
+        // Fonction pour enregistrer les données dans le localStorage
+        function saveDataToLocalStorage(data) {
+            localStorage.setItem('tableData', JSON.stringify(data));
+        }
+
+        // Fonction pour ajouter une nouvelle colonne au tableau
+        function addNewColumn() {
+            var table = document.getElementById('HORTable');
+            var rows = table.getElementsByTagName('tr');
+            for (var i = 0; i < rows.length; i++) {
+                var cell = document.createElement('td');
+                cell.textContent = 'Nouvelle donnée';
+                rows[i].appendChild(cell);
+            }
+        }
+
+        // Fonction pour gérer les modifications du tableau
+        function handleTableChanges() {
+            var table = document.getElementById('HORTable');
+            table.addEventListener('input', function (event) {
+                var target = event.target;
+                var rowIndex = target.closest('tr').rowIndex;
+                var cellIndex = target.cellIndex;
+
+                // Mettre à jour les données du tableau JavaScript avec les modifications en temps réel
+                var tableData = getStoredData();
+                if (!tableData.rows[rowIndex]) {
+                    tableData.rows[rowIndex] = [];
+                }
+                tableData.rows[rowIndex][cellIndex] = target.textContent;
+                saveDataToLocalStorage(tableData);
+            });
+        }
+
+        // Chargement initial de la page
+        document.addEventListener('DOMContentLoaded', function () {
+            var tableData = getStoredData();
+            var table = document.getElementById('HORTable');
+
+            // Remplir le tableau avec les données existantes du localStorage
+            for (var i = 0; i < tableData.rows.length; i++) {
+                var rowData = tableData.rows[i];
+                var row = table.insertRow();
+                for (var j = 0; j < rowData.length; j++) {
+                    var cell = row.insertCell();
+                    cell.textContent = rowData[j];
+                }
+            }
+
+            // Ajouter une nouvelle colonne pour les nouvelles données
+            addNewColumn();
+
+            // Gérer les modifications du tableau
+            handleTableChanges();
+        });
+
+
+    var datum = localStorage.getItem('Datum');
+    var startzeit = localStorage.getItem('Startzeit');
+    var endzeit = localStorage.getItem('Endzeit');
+    var pa = localStorage.getItem('PA');
+    var stuck = localStorage.getItem('Stuckzahl');
+    var count1 = localStorage.getItem('button1');
+    var count2 = localStorage.getItem('button2');
+    var count3 = localStorage.getItem('button3');
+    var count4 = localStorage.getItem('button4');
+    var count5 = localStorage.getItem('button5');
+    var count6 = localStorage.getItem('button6');
+    var count7 = localStorage.getItem('button7');
+    var count8 = localStorage.getItem('button8');
+    var count9 = localStorage.getItem('button9');
+    var count10 = localStorage.getItem('button10');
+    var count11 = localStorage.getItem('button11');
+    var count12 = localStorage.getItem('button12');
+    var count13 = localStorage.getItem('button13');
+    var count14 = localStorage.getItem('button14');
+    var count15 = localStorage.getItem('button15');
+    var count16 = localStorage.getItem('button16');
+    var count17 = localStorage.getItem('button17');
+    var count18 = localStorage.getItem('button18');
+    var count19 = localStorage.getItem('button19');
+    var count20 = localStorage.getItem('button20');
+    var count21 = localStorage.getItem('button21');
+    var count22 = localStorage.getItem('button22');
+    var count23 = localStorage.getItem('button23');
+    var count24 = localStorage.getItem('button24');
+    
+    var uhrzeit = startzeit + " / " + endzeit;
+
+
+    function createAndFillCell(targetRow, content) {
+        var newCell = targetRow.insertCell();
+        newCell.textContent = content;
+    }
+
+    if (datum) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[0];
+        createAndFillCell(targetRow, datum);
+    }
+    if (uhrzeit) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[1];
+        createAndFillCell(targetRow, uhrzeit);
+    }
+    if (pa) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[2];
+        createAndFillCell(targetRow, pa);
+    }
+    if (stuck) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[3];
+        createAndFillCell(targetRow, stuck);
+    }
+    if (count1) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[4];
+        createAndFillCell(targetRow, count1);
+    }
+    if (count2) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[5];
+        createAndFillCell(targetRow, count2);
+    }
+    if (count3) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[6];
+        createAndFillCell(targetRow, count3);
+    }
+    if (count4) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[7];
+        createAndFillCell(targetRow, count4);
+    }
+    if (count5) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[8];
+        createAndFillCell(targetRow, count5);
+    }
+    if (count6) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[9];
+        createAndFillCell(targetRow, count6);
+    }
+    if (count7) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[10];
+        createAndFillCell(targetRow, count7);
+    }
+    if (count8) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[11];
+        createAndFillCell(targetRow, count8);
+    }
+    if (count9) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[12];
+        createAndFillCell(targetRow, count9);
+    }
+    if (count10) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[13];
+        createAndFillCell(targetRow, count10);
+    }
+    if (count11) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[14];
+        createAndFillCell(targetRow, count11);
+    }
+    if (count12) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[15];
+        createAndFillCell(targetRow, count12);
+    }
+    if (count13) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[16];
+        createAndFillCell(targetRow, count13);
+    }
+    if (count14) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[17];
+        createAndFillCell(targetRow, count14);
+    }
+    if (count15) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[18];
+        createAndFillCell(targetRow, count15);
+    }
+    if (count16) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[19];
+        createAndFillCell(targetRow, count16);
+    }
+    if (count17) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[20];
+        createAndFillCell(targetRow, count17);
+    }
+    if (count18) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[21];
+        createAndFillCell(targetRow, count18);
+    }
+    if (count19) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[22];
+        createAndFillCell(targetRow, count19);
+    }
+        if (count20) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[23];
+        createAndFillCell(targetRow, count20);
+    }
+    if (count21) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[24];
+        createAndFillCell(targetRow, count21);
+    }
+    if (count22) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[25];
+        createAndFillCell(targetRow, count22);
+    }
+    if (count23) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[26];
+        createAndFillCell(targetRow, count23);
+    }
+    if (count24) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[27];
+        createAndFillCell(targetRow, count24);
+    }
+
+</script>
+</body>
+</html>

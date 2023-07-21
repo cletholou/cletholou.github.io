@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Luncher</title>
+    <style>
+
+        .center-button {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .center-button button {
+            padding: 50px;
+            font-size: 50px;
+        }
+        
+        body {
+            background-color: white;
+        }
+        button {
+            background-color: lightgray;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Launcher</h1>
+
+    <div class="center-button">
+        <button id="button1">Starten</button>
+    </div>
+
+    <script>
+
+        function openPopupMain() {
+            window.open("Neue.html","popupwindow","width=1920, height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button1 = document.getElementById("button1");
+
+            button1.addEventListener("click", function() {
+                openPopupMain();
+                setInterval(function(){window.close();},5000);
+                
+            });
+        });
+        
+    </script>
+</body>
+</html>

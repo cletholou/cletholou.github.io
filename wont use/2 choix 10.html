@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Was ist das Problem ?</title>
+    <style>
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px;
+        }
+        body {
+            background-color:  wheat;
+        }
+        button {
+            background-color: red;
+        }
+
+        .button-grid button {
+            padding: 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Was ist das Problem</h1>
+    <div class="button-grid">
+        <button id="button1">fehlt</button>
+        <button id="button2">falsh montiert</button>
+    </div>
+    <script>
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button1 = document.getElementById("button1");
+
+            button1.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    num20++;
+                    window.close("2 choix 10.html");
+                }
+                else {
+                    window.close("2 choix 10.html");
+                }
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button2 = document.getElementById("button2");
+
+            button2.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    num21++;
+                    window.close("2 choix 10.html");
+                }
+                else {
+                    window.close("2 choix 10.html");
+                }
+            });
+        });
+        
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px;
+        }
+
+        .button-grid button {
+            padding: 30px 15px;
+            font-size: 20px;
+        }
+        
+        .center-button {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .center-button button {
+            padding: 20px;
+            font-size: 20px;
+        }
+
+        body {
+            background-color: white;
+        }
+        button {
+            background-color: lightgray;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="button-grid">
+        <button id="button1">2 Kontakthalter</button>
+        <button id="button2">15 M6x12 Schraube - fehlt</button>
+        <button id="button3">15 M6x12 Schraube - drehmoment</button>
+        <button id="button4">11 U-Scheibe</button>
+        <button id="button5">15 M6x20 Schraube</button>
+        <button id="button6">12 D-Scheibe</button>
+        <button id="button7">13 C-Scheibe</button>
+        <button id="button8">6 Bültescheibe</button>
+        <button id="button9">9 Stecker - fehlt</button>
+        <button id="button10">9 Stecker - falsh montiert</button>
+        <button id="button11">3 Clip - fehlt</button>
+        <button id="button12">3 Clip - falsh montiert</button>
+        <button id="button13">4 Schlosshalter</button>
+        <button id="button14">7 EJOT Schraube - fehlt</button>
+        <button id="button15">7 EJOT Schraube - drehmoment</button>
+        <button id="button16">14 M6x20 Schraube</button>
+        <button id="button17">11 U-Scheibe</button>
+        <button id="button18">12 D-Scheibe</button>
+        <button id="button19">13 C-Scheibe</button>
+        <button id="button20">6 Bültescheibe</button>
+        <button id="button21">10 Plug - fehlt</button>
+        <button id="button22">10 Plug - falsh montiert</button>
+        <button id="button23">Ungebaut</button>
+            </div>
+    <div class="center-button">
+        <button id="button24">fertig</button>
+        <button id="button25">Berichtigung</button>
+    </div>
+    <script>
+
+        var decrementEnabled = false;
+        var targetButton = null;
+
+        function enableDecrement(button) {
+            decrementEnabled = true;
+            targetButton = button;
+            button.style.backgroundColor = "red";
+        }
+
+        function disableDecrement(button) {
+            decrementEnabled = false;
+            targetButton = button;
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var buttons = document.querySelectorAll("button[id^='button']");
+            buttons.forEach(function(button) {
+                button.dataset.count = "0";
+                button.innerText = button.innerText.replace(/ \d+$/, "");
+                localStorage.setItem(button.id, "0");
+            });
+
+            buttons.forEach(function(button) {
+                button.addEventListener("dblclick", function() {
+                    if (!decrementEnabled) {
+                        var count = parseInt(button.dataset.count) || 0;
+                        count++;
+                        button.dataset.count = count;
+                        if (count < 2) {
+                            button.innerText = button.innerText + " : " + count;
+                        } else if (count < 11) {
+                            button.innerText = button.innerText.slice(0, -1) + count;
+                        } else {
+                            button.innerText = button.innerText.slice(0, -2) + count;
+                        }
+                    } else {
+                        var count = parseInt(button.dataset.count) || 0;
+                        if (count === 0) {
+                            disableDecrement(button);
+                            button25.style.backgroundColor = "lightgray";
+                        } else {
+                        count--;
+                        button.dataset.count = count;
+                        if (count ===0 ) {
+                            button.innerText = button.innerText.slice(0, -4);
+                        } else if (count < 9) {
+                            button.innerText = button.innerText.slice(0, -1) + count;
+                        } else {
+                            button.innerText = button.innerText.slice(0, -2) + count;
+                        }
+                        disableDecrement(button);
+                        button25.style.backgroundColor = "lightgray";
+                        }
+                    }
+                localStorage.setItem(button.id, count.toString());
+                });
+            });
+        });
+
+        function openPopupfertig() {
+            window.open("Fertig.html", "popupwindow", "width=1920,height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button24 = document.getElementById("button24");
+
+            button24.addEventListener("click", function() {
+                openPopupfertig();
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button25 = document.getElementById("button25");
+
+            button25.addEventListener("click", function() {
+                enableDecrement(this);
+            });
+    });
+
+    </script>
+</body>
+</html>

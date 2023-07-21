@@ -1,0 +1,201 @@
+<button id="button1">2 Kontakthalter</button>
+<button id="button2">16 M6x12 DIN Schraube - fehlt</button>
+<button id="button3">16 M6x12 DIN Schraube - drehmoment</button>
+<button id="button4">13 U-Scheibe</button>
+<button id="button5">15 M6x25 DIN Schraube</button>
+<button id="button6">11 D-Scheibe</button>
+<button id="button7">12 C-Scheibe</button>
+<button id="button8">7 Bültescheibe</button>
+<button id="button9">5 Stecker - fehlt</button>
+<button id="button10">5 Stecker - falsh montiert</button>
+<button id="button11">6 Clip - fehlt</button>
+<button id="button12">6 Clip - falsh montiert</button>
+<button id="button13">4 Schosshalter</button>
+<button id="button14">8 EJOT Schraube - fehlt</button>
+<button id="button15">8 EJOT Schraube - drehmoment</button>
+<button id="button16">14 M6x16 DIN Schraube</button>
+<button id="button17">11 D-Scheibe</button>
+<button id="button18">12 C-Scheibe</button>
+<button id="button19">7 Bültescheibe</button>
+<button id="button20">18 M5 ISO Schraube - fehlt</button>
+<button id="button21">18 M5 ISO Schraube - drehmoment</button>
+<button id="button22">10 Plug - fehlt</button>
+<button id="button23">10 Plug - falsh montiert</button>
+<button id="button24">Ungebaut</button>
+
+
+.image {
+      display: block;
+      width: 850px;
+      height: 577px;
+    }
+
+<img class="image" src="\\server-fs-3\benutzerdaten$\clement.zakrzewski\Desktop\codes\HOR.png" alt="Ma photo" width="850" height="577">
+
+<button id="button1">2 Kontakthalter</button>
+<button id="button13">4 Schosshalter</button>
+<button id="button2">16 M6x12 DIN Schraube - fehlt</button>
+<button id="button14">8 EJOT Schraube - fehlt</button>
+<button id="button3">16 M6x12 DIN Schraube - drehmoment</button>
+<button id="button15">8 EJOT Schraube - drehmoment</button>
+<button id="button4">13 U-Scheibe</button>
+<button id="button16">14 M6x16 DIN Schraube</button>
+<button id="button5">15 M6x25 DIN Schraube</button>
+<button id="button17">11 D-Scheibe</button>
+<button id="button6">11 D-Scheibe</button>
+<button id="button18">12 C-Scheibe</button>
+<button id="button7">12 C-Scheibe</button>
+<button id="button19">7 Bültescheibe</button>
+<button id="button8">7 Bültescheibe</button>
+<button id="button20">18 M5 ISO Schraube - fehlt</button>
+<button id="button9">5 Stecker - fehlt</button>
+<button id="button21">18 M5 ISO Schraube - drehmoment</button>
+<button id="button10">5 Stecker - falsh montiert</button>
+<button id="button22">10 Plug - fehlt</button>
+<button id="button11">6 Clip - fehlt</button>
+<button id="button23">10 Plug - falsh montiert</button>
+<button id="button12">6 Clip - falsh montiert</button>
+<button id="button24">Ungebaut</button>
+
+
+ action="script.php" method="POST"
+
+
+function checkselection() {
+            var selectElement = document.getElementById("patrone");
+            var selectedValue = selectElement.value;
+
+        }
+        
+        function openPopupH() {
+            window.open("HauptseiteHOR.html","popupwindow","width=1920, height=1080");
+        }
+        function openPopupV() {
+            window.open("HauptseiteVER.html","popupwindow","width=1920, height=1080");
+        }
+                
+        function openPopupVE() {
+            window.open("HauptseiteVEREE.html","popupwindow","width=1920, height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button = document.getElementById("button");
+
+            button.addEventListener("click", function() {
+                if (selectedValue === "HOR") {
+                    openPopupH();
+                } else if (selectedValue === "VER") {
+                    openPopupV();
+                } else if (selectedValue === "VEREE") {
+                    openPopupVE();
+                }
+                
+            });
+        });
+
+
+
+
+var decrementEnabled = false;
+        var targetButton = null;
+
+        window.addEventListener("DOMContentLoaded", function() {
+           var buttons = document.querySelectorAll("button[id^='button']");
+
+            buttons.forEach(function(button) {
+                button.addEventListener("dblclick", function() {
+                    if (decrementEnabled = false) {    
+                    count = parseInt(button.dataset.count) || 0;
+                        count++;
+                        button.dataset.count === count;
+                        if (count < 2) {
+                            button.innerText = button.innerText + " : " + count;
+                        } else if (count < 10) {
+                            button.innerText = button.innerText.slice(0, -3) + " : " + count;
+                        } else {
+                            button.innerText = button.innerText.slice(0, -4) + " : " + count;
+                        }
+                    } else if (decrementEnabled === true) {
+                    count = parseInt(button.dataset.count) || 0;
+                        count--;
+                        button.dataset.count === count;
+                        if (count < 2) {
+                            button.innerText = button.innerText + " : " + count;
+                        } else if (count < 10) {
+                            button.innerText = button.innerText.slice(0, -3) + " : " + count;
+                        } else {
+                            button.innerText = button.innerText.slice(0, -4) + " : " + count;
+                        }
+                    decrementEnabled = false
+                    }
+               });
+           });
+       });
+    
+       function openPopupfertig() {
+            window.open("Fertig.html","popupwindow","width=1920, height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button25 = document.getElementById("button25");
+
+            button25.addEventListener("click", function() {
+                openPopupfertig();
+                
+            });
+        });
+
+        function enableDecrement(button) {
+            decrementEnabled = true;
+            targetButton = button;
+            button.style.backgroundColor = "red";
+        }
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button26 = document.getElementById("button26");
+
+            button26.addEventListener("click", function() {
+                enableDecrement(button);
+                
+            });
+        });
+
+
+
+    Office.initialize = function () {
+        document.getElementById("Senden").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            var date = document.getElementById("date").value;
+            var time = document.getElementById("time").value;
+            var pa = document.getElementById("number1").value;
+            var stueckzahl = document.getElementById("number2").value;
+            var patrone = document.getElementById("patrone").value;
+
+            var filePath = "";
+            if (patrone === "HOR") {
+                filePath = "//server-fs-3/benutzerdaten$/clement.zakrzewski/Desktop/excelauto/ExcelautoHOR.xlsx";
+            } else if (patrone === "VER") {
+                filePath = "//server-fs-3/benutzerdaten$/clement.zakrzewski/Desktop/excelauto/ExcelautoVERT.xlsx";
+            } else if (patrone === "VEREE") {
+                filePath = "//server-fs-3/benutzerdaten$/clement.zakrzewski/Desktop/excelauto/ExcelautoVERTEE.xlsx";
+            }
+
+            Excel.run(filePath, function (context) {
+                var sheet = context.workbook.worksheets.getActiveWorksheet();
+
+                sheet.getCell("C1").values = [date];
+                sheet.getCell("C2").values = [time];
+                sheet.getCell("C3").values = [pa];
+                sheet.getCell("C4").values = [stueckzahl];
+
+                return context.sync();
+            })
+                .then(function () {
+                    console.log("Les valeurs du formulaire ont été enregistrées dans Excel.");
+                })
+                .catch(function (error) {
+                    console.log("Une erreur s'est produite : " + error);
+                });
+        });
+    }

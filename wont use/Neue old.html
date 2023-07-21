@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neue</title>
+    <style>
+
+        .form-container {
+            margin-bottom: 20px;
+        }
+
+        .form-container label,
+        .form-container input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 50px;
+        }
+
+        .button-grid button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: wheat;
+        }
+        button {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Neue :</h1>
+
+    <div class="form-container">
+        <form>
+            <label for="inputD">Datum :</label>
+            <input type="text" id="inputD" name="inputD">
+        </form>
+    </div>
+
+    <div class="form-container">   
+        <form>
+            <label for="inputS">Startzeit (XX:XX):</label>
+            <input type="text" id="inputS" name="inputS">
+        </form>
+    </div>
+    
+    <div class="form-container">
+        <form>
+            <label for="inputP">P.A. :</label>
+            <input type="text" id="inputP" name="inputP">
+        </form>
+    </div>
+
+    <div class="form-container">
+        <form>
+            <label for="inputP">Stückzahl :</label>
+            <input type="text" id="inputP" name="inputP">
+        </form>
+    </div>
+
+
+    <div class="button-grid">
+        <button id="button1">fertig</button>
+    </div>
+    <script>
+        
+        var cloosecount = 0
+        var button1 = document.getElementById("button1");
+
+        function openPopup() {
+            window.open("Hauptseite.html","popupwindow","width=1920, height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button1 = document.getElementById("button1");
+
+            button1.addEventListener("click", function() {
+                if (cloosecount < 1 ) {
+                    cloosecount++;
+                } else {
+                    openPopup();
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

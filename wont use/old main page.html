@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interface utilisateur</title>
+    <style>
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin: 20px;
+        }
+
+        .button-grid button {
+            padding: 20px;
+            font-size: 16px;
+        }
+
+        .center-button {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .center-button button {
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        body {
+            background-color: aquamarine;
+        }
+        button {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Interface utilisateur</h1>
+
+    <div class="button-grid">
+        <button id="button1">2 Kontakthalter</button>
+        <button id="button2">16 M6x12 DIN Schraube</button>
+        <button id="button3">13 U-Scheibe</button>
+        <button id="button4">15 M6x25 DIN Schraube</button>
+        <button id="button5">11 D-Scheibe</button>
+        <button id="button6">12 C-Scheibe</button>
+        <button id="button7">7 Bültescheibe</button>
+        <button id="button8">5 Stecker</button>
+        <button id="button9">6 Clip</button>
+        <button id="button10">4 Schosshalter</button>
+        <button id="button11">8 EJOT Schraube</button>
+        <button id="button12">14 M6x16 DIN Schraube</button>
+        <button id="button13">11 D-Scheibe</button>
+        <button id="button14">12 C-Scheibe</button>
+        <button id="button15">7 Bültescheibe</button>
+        <button id="button16">18 M5 ISO Schraube</button>
+        <button id="button17">10 Plug</button>
+        <button id="button18">Ungebaut</button>
+    </div>
+    <div class="center-button">
+        <button id="button19">fertig</button>
+    </div>
+    
+    <script>
+
+        var count1 = 0;
+        var count2 = 0;
+        var count8 = 0;
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button1 = document.getElementById("button1");
+
+            button1.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    count1++;
+                    console.log(count1);
+                }
+            });
+        });
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button2 = document.getElementById("button2");
+
+            button2.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    count2++;
+                    console.log(count2)
+                }
+            });
+        });
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button3 = document.getElementById("button3");
+
+            button3.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button4 = document.getElementById("button4");
+
+            button4.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button5 = document.getElementById("button5");
+
+            button5.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button6 = document.getElementById("button6");
+
+            button6.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button7 = document.getElementById("button7");
+
+            button7.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+
+        function openPopup5() {
+            window.open("2 choix 5.html","popupwindow","width=1920, height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button8 = document.getElementById("button8");
+
+            button8.addEventListener("click", function() {
+                openPopup5();
+            });
+        });
+
+        function openPopup6() {
+            window.open("2 choix 6.html","popupwindow","width=1920, height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button9 = document.getElementById("button9");
+
+            button9.addEventListener("click", function() {
+                openPopup6();
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button10 = document.getElementById("button10");
+
+            button10.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+
+        function openPopup8() {
+            window.open("2 choix 8.html","popupwindow","width=1920, height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button11 = document.getElementById("button11");
+
+            button11.addEventListener("click", function() {
+                openPopup8();
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button12 = document.getElementById("button12");
+
+            button12.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button13 = document.getElementById("button13");
+
+            button13.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button14 = document.getElementById("button14");
+
+            button14.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button15 = document.getElementById("button15");
+
+            button15.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button16 = document.getElementById("button16");
+
+            button16.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+
+        function openPopup10() {
+            window.open("2 choix 10.html","popupwindow","width=1920, height=1080");
+        }
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button17 = document.getElementById("button17");
+
+            button17.addEventListener("click", function() {
+                openPopup10();
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button18 = document.getElementById("button18");
+
+            button18.addEventListener("click", function() {
+                if (confirm("valider")) {
+                    ;
+                }
+            });
+        });
+
+        function openPopupfertig() {
+            window.open("fertig.html","popupwindow","width=1920, height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button19 = document.getElementById("button19");
+
+            button19.addEventListener("click", function() {
+                openPopupfertig();
+                
+            });
+        });
+
+    </script>
+</body>
+</html>

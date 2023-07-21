@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fertig</title>
+    <style>
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px;
+        }
+
+        .button-grid button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-container {
+            margin-bottom: 20px;
+        }
+
+        .form-container label,
+        .form-container input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        body {
+            background-color:  wheat;
+        }
+        button {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>fertig</h1>
+
+    <div class="form-container">
+        <form>
+            <label for="inputE">Endzeit (/XX:XX):</label>
+            <input type="text" id="input1" name="input1">
+        </form>
+    </div>
+    <div class="button-grid">
+        <button id="button1">Neues</button>
+    </div>
+    <script>
+
+        var closecount = 0
+        var button1 = document.getElementById("button1");
+        
+        function openPopup() {
+            window.open("Neue.html","popupwindow","width=1920, height=1080");
+        }
+        
+            window.addEventListener("DOMContentLoaded", function() {
+            var button1 = document.getElementById("button1");
+
+            button1.addEventListener("click", function() {
+                if (closecount < 1 ) {
+                    closecount++;
+                } else {
+                    openPopup();
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

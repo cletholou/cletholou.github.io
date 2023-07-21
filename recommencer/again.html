@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<h2>Fehlt table</h2>
+<table id="HORTable">
+    <tr>
+      <th colspan="2">Datum</th>
+    </tr>
+    <tr>
+      <th colspan="2">Uhrzeit</th> 
+    </tr>
+    <tr>
+      <th colspan="2">P.A.</th>
+    </tr>
+    <tr>
+      <th colspan="2">Stückzahl</th>
+    </tr>
+    <tr>
+      <th>2 Kontakthalter</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th rowspan="2">16 M6x12 DIN Schraube</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <td>drehmoment</td>
+    </tr>
+    <tr>
+      <th>13 U-Scheibe</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th>15 M6x25 DIN Schraube</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th>11 D-Scheibe</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th>12 C-Scheibe</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th>7 Bültescheibe</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th rowspan="2">5 Stecker</th> 
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <td>falsh montiert</td>
+    </tr>
+    <tr>
+      <th rowspan="2">6 Clip</th> 
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <td>falsh montiert</td>
+    </tr>
+    <tr>
+      <th>4 Schlosshalter</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th rowspan="2">8 EJOT Schraube</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <td>drehmoment</td>
+    </tr>
+    <tr>
+      <th>14 M6x16 DIN Schraube</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th>11 D-Scheibe</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th>12 C-Scheibe</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th>7 Bültescheibe</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <th rowspan="2">18 M5 ISO Schraube</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <td>drehmoment</td>
+    </tr>
+    <tr>
+      <th rowspan="2">10 Plug</th>
+      <td>fehlt</td>
+    </tr>
+    <tr>
+      <td>falsh montiert</td>
+    </tr>
+    <tr>
+      <th colspan="2">Ungebaut</th>
+    </tr>
+</table>
+
+<button onclick="saveTable()">Save Table</button>
+
+<button onclick="loadTable()">Load Today's Table</button>
+
+<script>
+
+    var datum = localStorage.getItem('Datum');
+    var startzeit = localStorage.getItem('Startzeit');
+    var endzeit = localStorage.getItem('Endzeit');
+    var pa = localStorage.getItem('PA');
+    var stuck = localStorage.getItem('Stuckzahl');
+    var count1 = localStorage.getItem('button1');
+    var count2 = localStorage.getItem('button2');
+    var count3 = localStorage.getItem('button3');
+    var count4 = localStorage.getItem('button4');
+    var count5 = localStorage.getItem('button5');
+    var count6 = localStorage.getItem('button6');
+    var count7 = localStorage.getItem('button7');
+    var count8 = localStorage.getItem('button8');
+    var count9 = localStorage.getItem('button9');
+    var count10 = localStorage.getItem('button10');
+    var count11 = localStorage.getItem('button11');
+    var count12 = localStorage.getItem('button12');
+    var count13 = localStorage.getItem('button13');
+    var count14 = localStorage.getItem('button14');
+    var count15 = localStorage.getItem('button15');
+    var count16 = localStorage.getItem('button16');
+    var count17 = localStorage.getItem('button17');
+    var count18 = localStorage.getItem('button18');
+    var count19 = localStorage.getItem('button19');
+    var count20 = localStorage.getItem('button20');
+    var count21 = localStorage.getItem('button21');
+    var count22 = localStorage.getItem('button22');
+    var count23 = localStorage.getItem('button23');
+    var count24 = localStorage.getItem('button24');
+    
+    var uhrzeit = startzeit + " / " + endzeit;
+
+    if (datum) {
+        var table = document.getElementById('HORTable');
+        var targetrow = table.rows[0];
+        var cells = targetrow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+                cells[i].textContent = datum;
+                break;
+            }
+        }
+    }
+    if (uhrzeit) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[1]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = uhrzeit;
+            break;
+            }
+        }
+    }
+
+    if (pa) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[2]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = pa;
+            break;
+            }
+        }
+    }
+
+    if (stuck) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[3]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = stuck;
+            break;
+            }
+        }
+    }
+
+
+    if (count1) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[4]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count1;
+            break;
+            }
+        }
+    }
+    if (count2) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[5]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count2;
+            break;
+            }
+        }
+    }
+    if (count3) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[6]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count3;
+            break;
+            }
+        }
+    }
+    if (count4) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[7]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count4;
+            break;
+            }
+        }
+    }
+    if (count5) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[8]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count5;
+            break;
+            }
+        }
+    }
+    if (count6) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[9]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count6;
+            break;
+            }
+        }
+    }
+    if (count7) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[10]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count7;
+            break;
+            }
+        }
+    }
+    if (count8) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[11]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count8;
+            break;
+            }
+        }
+    }
+    if (count9) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[12]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count9;
+            break;
+            }
+        }
+    }
+    if (count10) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[13]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count10;
+            break;
+            }
+        }
+    }
+    if (count11) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[14]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count11;
+            break;
+            }
+        }
+    }
+    if (count12) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[15]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count12;
+            break;
+            }
+        }
+    }
+    if (count13) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[16]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count13;
+            break;
+            }
+        }
+    }
+    if (count14) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[17]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count14;
+            break;
+            }
+        }
+    }
+    if (count15) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[18]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count15;
+            break;
+            }
+        }
+    }
+    if (count16) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[19]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count16;
+            break;
+            }
+        }
+    }
+    if (count17) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[20]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count17;
+            break;
+            }
+        }
+    }
+    if (count18) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[21]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count18;
+            break;
+            }
+        }
+    }
+    if (count19) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[22]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count19;
+            break;
+            }
+        }
+    }
+    if (count20) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[23]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count20;
+            break;
+            }
+        }
+    }
+    if (count21) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[24]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count21;
+            break;
+            }
+        }
+    }
+    if (count22) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[25]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count22;
+            break;
+            }
+        }
+    }
+    if (count23) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[26]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count23;
+            break;
+            }
+        }
+    }
+    if (count24) {
+        var table = document.getElementById('HORTable');
+        var targetRow = table.rows[27]
+        var cells = targetRow.cells;
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].textContent === '') {
+            cells[i].textContent = count24;
+            break;
+            }
+        }
+    }
+
+function getCurrentDate() {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = String(today.getMonth() + 1).padStart(2, '0');
+    var day = String(today.getDate()).padStart(2, '0');
+    return year + '-' + month + '-' + day;
+}
+
+function saveTable() {
+    var currentDate = getCurrentDate();
+    var originalTable = document.getElementById('VEREETable');
+    var modifiedTable = originalTable.cloneNode(true);
+
+    // Clear the content of the cells in the cloned table
+    var cells = modifiedTable.getElementsByTagName('td');
+    for (var i = 3; i < cells.length; i++) {
+        cells[i].textContent = '';
+    }
+
+    // Add a new row for the date
+    var newRow = modifiedTable.insertRow(0);
+    var newCell = newRow.insertCell();
+    newCell.colSpan = 3;
+    newCell.textContent = "Datum: " + currentDate;
+
+    // Create a Blob containing the table data
+    var tableData = new Blob([modifiedTable.outerHTML], { type: 'text/html' });
+
+    // Create a URL to download the Blob as a file
+    var downloadURL = URL.createObjectURL(tableData);
+
+    // Create a link element and simulate a click to trigger the download
+    var link = document.createElement('a');
+    link.href = downloadURL;
+    link.download = currentDate + '_modified_table.html';
+    link.click();
+
+    // Clean up the URL and remove the link
+    URL.revokeObjectURL(downloadURL);
+
+    // Save the current date in the localStorage
+    localStorage.setItem('currentDate', currentDate);
+}
+
+function loadTable() {
+    var currentDate = getCurrentDate();
+    var savedTableContent = localStorage.getItem(currentDate);
+
+    if (savedTableContent) {
+        var tableContainer = document.createElement('div');
+        tableContainer.innerHTML = savedTableContent;
+
+        var savedTable = tableContainer.querySelector('#VEREETable');
+        if (savedTable) {
+            var existingTable = document.getElementById('VEREETable');
+            existingTable.parentNode.replaceChild(savedTable, existingTable);
+        } else {
+            alert('Invalid file format or table not found in the file.');
+        }
+    } else {
+        alert('No saved table found for today.');
+    }
+}
+</script>
+</body>
+</html>

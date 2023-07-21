@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fertig</title>
+    <style>
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="time"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            margin-top: 10 px;
+        }
+
+        body {
+            background-color: wheat;
+        }
+        button {
+            background-color: red;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>fertig</h1>
+
+    <form id="form">
+        <label for="time2">Endzeit :</label>
+        <input type="time" id="time2" name="Startzeit" required>
+
+        <input type="submit" value="Senden">
+    </form>
+
+        <button id="button">Neues</button>
+        <script>
+        
+        document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var endzeit = document.getElementById("time2").value;
+            localStorage.setItem('Endzeit', endzeit);
+        });
+
+
+        var patrone = localStorage.getItem('patrone');
+
+        function openPopupHOR() {
+            if (patrone === "HOR") {
+                window.open("trytableHor.html", "popupwindow", "width=1920,height=1080");
+            }
+        }
+
+        function openPopupVER() {
+            if (patrone === "VER") {
+                window.open("trytableVer.html", "popupwindow", "width=1920,height=1080");
+            }
+        }
+
+        function openPopupVEREE() {
+            if (patrone === "VEREE") {
+                window.open("trytableVerEE.html", "popupwindow", "width=1920,height=1080");
+            }
+        }
+
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button = document.getElementById("button");
+
+            button.addEventListener("click", function() {
+                    openPopupHOR();
+                    openPopupVER();
+                    openPopupVEREE();
+            });
+        });
+        
+        
+
+        function openPopup() {
+            window.open("Neue.html","popupwindow","width=1920, height=1080");
+        }
+        
+            window.addEventListener("DOMContentLoaded", function() {
+            var button = document.getElementById("button");
+
+                button.addEventListener("dblclick", function() {
+                    openPopup();
+                })
+            });
+
+    </script>
+</body>
+</html>

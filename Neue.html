@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neue</title>
+    <style>
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="date"],
+        input[type="time"],
+        input[type="number"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            margin-top: 10 px;
+        }
+
+        body {
+            background-color: white;
+        }
+        button {
+            background-color: lightgrey;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Ein neue Production starten</h1>
+
+    <form>
+        <label for="date">Datum :</label>
+        <input type="date" id="date" name="Datum" required>
+
+        <label for="time">Startzeit :</label>
+        <input type="time" id="time" name="Startzeit" required>
+
+        <label for="number1">P.A. :</label>
+        <input type="number" id="number1" name="PA" required>
+
+        <label for="number2">Stuckzahl :</label>
+        <input type="number" id="number2" name="Stuckzahl" required>
+
+        <label for="patrone">Welches patrone ?</label>
+        <select name="patronee" id="patrone" multiple>
+            <option value="HOR">Patrone HORIZONTAL</option>
+            <option value="VER">Patrone VERTIKAL</option>
+            <option value="VEREE">Patrone VERTIKAL EE</option>
+        </select>
+        <input type="submit" value="Senden">
+    </form>
+
+    <button id="button">Fertig</button>
+
+    <script>
+
+        var form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Pour éviter le rechargement de la page
+            var date = document.getElementById("date").value;
+            var starthour = document.getElementById("time").value;
+            var pa = document.getElementById("number1").value;
+            var stuck = document.getElementById("number2").value;
+            var patrone = document.getElementById("patrone").value;
+            localStorage.setItem('Datum', date);
+            localStorage.setItem('Startzeit', starthour);
+            localStorage.setItem('PA', pa);
+            localStorage.setItem('Stuckzahl', stuck);
+            localStorage.setItem('patrone', patrone);
+        });
+
+        function openPopupHOR() {
+            var patrone = document.getElementById("patrone").value;
+            if (patrone === "HOR") {
+                window.open("HauptseiteHOR.html", "popupwindow", "width=1920,height=1080");
+            }
+        }
+
+        function openPopupVER() {
+            var patrone = document.getElementById("patrone").value;
+            if (patrone === "VER") {
+                window.open("HauptseiteVER.html", "popupwindow", "width=1920,height=1080");
+            }
+        }
+
+        function openPopupVEREE() {
+            var patrone = document.getElementById("patrone").value;
+            if (patrone === "VEREE") {
+                window.open("HauptseiteVEREE.html", "popupwindow", "width=1920,height=1080");
+            }
+        }
+
+        
+        window.addEventListener("DOMContentLoaded", function() {
+            var button = document.getElementById("button");
+
+            button.addEventListener("click", function() {
+                    openPopupHOR();
+                    openPopupVER();
+                    openPopupVEREE();
+            });
+        });
+
+    </script>
+</body>
+</html>

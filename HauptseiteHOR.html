@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 150px;
+            height: 60px;
+            }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image {
+            margin: 20px;
+            width: 1000px;
+            height: 550px;
+        }
+
+        .bottom-row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .bottom-button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 150px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <button id="button9" class="button">5 Stecker fehlt</button>
+        <button id="button10" class="button">5 Stecker falsh montiert</button>
+        <button id="button11" class="button">6 Clip fehlt</button>
+        <button id="button12" class="button">6 Clip falsh montiert</button>
+        <button id="button24" class="button">Ungebaut</button>
+        <button id="button20" class="button">18 Schraube fehlt</button>
+        <button id="button21" class="button">18 Schraube drehmoment</button>
+        <button id="button22" class="button">10 Plug fehlt</button>
+        <button id="button23" class="button">10 Plug falsh montiert</button>
+
+    </div>
+    <div class="row">
+    <div class="column">
+        <button id="button8" class="button">7 Bültescheibe</button>
+        <button id="button7" class="button">12 C-Scheibe</button>
+        <button id="button6" class="button">11 D-Scheibe</button>
+        <button id="button5" class="button">15 Schraube</button>
+        <button id="button4" class="button">13 U-Scheibe</button>
+        <button id="button3" class="button">16 Schraube drehmoment</button>
+        <button id="button2" class="button">16 Schraube fehlt</button>
+        <button id="button1" class="button">2 Kontakthalter</button>
+
+    </div>
+    <img class="image" src="\\server-fs-3\benutzerdaten$\clement.zakrzewski\Desktop\codes\pictures\inkedHOR.jpg" alt="Ma photo" width="850" height="577">
+    <div class="column">
+        <button id="button19" class="button">7 Bültescheibe</button>
+        <button id="button18" class="button">12 C-Scheibe</button>
+        <button id="button17" class="button">11 D-Scheibe</button>
+        <button id="button16" class="button">14 M6x16 DIN Schraube</button>
+        <button id="button15" class="button">8 Schraube drehmoment</button>
+        <button id="button14" class="button">8 Schraube fehlt</button>
+        <button id="button13" class="button">4 Schosshalter</button>
+        </div>
+    </div>
+    <div class="bottom-row">
+        <button id="button25" class="bottom-button">Fertig</button>
+        <button id="button26" class="bottom-button">Berichtigung</button>
+    </div>
+    <script>
+        var decrementEnabled = false;
+        var targetButton = null;
+
+        function enableDecrement(button) {
+            decrementEnabled = true;
+            targetButton = button;
+            button.style.backgroundColor = "red";
+        }
+
+        function disableDecrement(button) {
+            decrementEnabled = false;
+            targetButton = button;
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var buttons = document.querySelectorAll("button[id^='button']");
+            buttons.forEach(function(button) {
+                button.dataset.count = "0";
+                button.innerText = button.innerText.replace(/ \d+$/, "");
+                localStorage.setItem(button.id, "0");
+            });
+
+            buttons.forEach(function(button) {
+                button.addEventListener("dblclick", function() {
+                    if (!decrementEnabled) {
+                        var count = parseInt(button.dataset.count) || 0;
+                        count++;
+                        button.dataset.count = count;
+                        if (count < 2) {
+                            button.innerText = button.innerText + " : " + count;
+                        } else if (count < 11) {
+                            button.innerText = button.innerText.slice(0, -1) + count;
+                        } else {
+                            button.innerText = button.innerText.slice(0, -2) + count;
+                        }
+                    } else {
+                        var count = parseInt(button.dataset.count) || 0;
+                        if (count === 0) {
+                            disableDecrement(button);
+                            button26.style.backgroundColor = "lightgray";
+                        } else {
+                        count--;
+                        button.dataset.count = count;
+                        if (count ===0 ) {
+                            button.innerText = button.innerText.slice(0, -4);
+                        } else if (count < 9) {
+                            button.innerText = button.innerText.slice(0, -1) + count;
+                        } else {
+                            button.innerText = button.innerText.slice(0, -2) + count;
+                        }
+                        disableDecrement(button);
+                        button26.style.backgroundColor = "lightgray";
+                        }
+                    }
+                localStorage.setItem(button.id, count.toString());
+                });
+            });
+        });
+
+        function openPopupfertig() {
+            window.open("Fertig.html", "popupwindow", "width=1920,height=1080");
+        }
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button25 = document.getElementById("button25");
+
+            button25.addEventListener("click", function() {
+                openPopupfertig();
+            });
+        });
+
+        window.addEventListener("DOMContentLoaded", function() {
+            var button26 = document.getElementById("button26");
+
+            button26.addEventListener("click", function() {
+                enableDecrement(this);
+            });
+    });
+    
+    </script>
+</body>
+</html>
