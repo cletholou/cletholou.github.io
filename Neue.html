@@ -78,35 +78,22 @@
             localStorage.setItem('patrone', patrone);
         });
 
-        function openPopupHOR() {
+        function openPopupHVV() {
             var patrone = document.getElementById("patrone").value;
             if (patrone === "HOR") {
                 window.open("HauptseiteHOR.html", "popupwindow", "width=1920,height=1080");
-            }
-        }
-
-        function openPopupVER() {
-            var patrone = document.getElementById("patrone").value;
-            if (patrone === "VER") {
+            } else if (patrone === "VER") {
                 window.open("HauptseiteVER.html", "popupwindow", "width=1920,height=1080");
-            }
-        }
-
-        function openPopupVEREE() {
-            var patrone = document.getElementById("patrone").value;
-            if (patrone === "VEREE") {
+            } else if (patrone === "VEREE") {
                 window.open("HauptseiteVEREE.html", "popupwindow", "width=1920,height=1080");
             }
         }
 
-        
         window.addEventListener("DOMContentLoaded", function() {
             var button = document.getElementById("button");
 
             button.addEventListener("click", function() {
-                    openPopupHOR();
-                    openPopupVER();
-                    openPopupVEREE();
+                openPopupHVV();
             });
         });
 
