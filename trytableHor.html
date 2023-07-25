@@ -6,7 +6,7 @@ table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
-    
+
 #button1 {
     position: absolute;
     right: 100px;
@@ -124,16 +124,15 @@ table, th, td {
         <th colspan="2">Ungebaut</th>
     </tr>
 </table>
-    <button id="saveButton">Enregistrer le tableau</button>
-    <button id="button1">Neue</button>
+    <button id="button1" class="button">Neue</button>
 <script>
-
+    
     var startzeit = localStorage.getItem('Startzeit');
     var endzeit = localStorage.getItem('Endzeit');
     var uhrzeit = startzeit + " / " + endzeit;
     localStorage.setItem("Uhrzeit", uhrzeit)
     
-function openPopup() {
+    function openPopup() {
         window.open("Neue.html","popupwindow","width=1920, height=1080");
     }
     
@@ -145,7 +144,7 @@ function openPopup() {
             })
         });
 
-        var dataKeys = ['Datum', 'Startzeit', 'Endzeit', 'PA', 'Stuckzahl'];
+        var dataKeys = ['Datum', 'Uhrzeit', 'PA', 'Stuckzahl'];
         var buttonKeys = ['button1', 'button2', 'button3', 'button4', 'button5', 'button6', 'button7', 'button8', 'button9', 'button10', 'button11', 'button12', 'button13', 'button14', 'button15', 'button16', 'button17', 'button18', 'button19', 'button20', 'button21', 'button22', 'button23', 'button24'];
 
         function createAndFillCell(targetRow, content) {
