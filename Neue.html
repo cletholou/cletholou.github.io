@@ -67,14 +67,14 @@
         form.addEventListener('submit', function(event) {
             event.preventDefault(); // Pour éviter le rechargement de la page
             var date = document.getElementById("date").value;
-            var starthour = document.getElementById("time").value;
-            var pa = document.getElementById("number1").value;
-            var stuck = document.getElementById("number2").value;
-            var patrone = document.getElementById("patrone").value;
             localStorage.setItem('Datum', date);
+            var starthour = document.getElementById("time").value;
             localStorage.setItem('Startzeit', starthour);
+            var pa = document.getElementById("number1").value;
             localStorage.setItem('PA', pa);
+            var stuck = document.getElementById("number2").value;
             localStorage.setItem('Stuckzahl', stuck);
+            var patrone = document.getElementById("patrone").value;
             localStorage.setItem('patrone', patrone);
         });
 
