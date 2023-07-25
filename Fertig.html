@@ -54,49 +54,24 @@
 
         var patrone = localStorage.getItem('patrone');
 
-        function openPopupHOR() {
+        function openPopupHVV() {
             if (patrone === "HOR") {
                 window.open("trytableHor.html", "popupwindow", "width=1920,height=1080");
-            }
-        }
-
-        function openPopupVER() {
-            if (patrone === "VER") {
+            } else if (patrone === "VER") {
                 window.open("trytableVer.html", "popupwindow", "width=1920,height=1080");
-            }
-        }
-
-        function openPopupVEREE() {
-            if (patrone === "VEREE") {
+            } else if (patrone === "VEREE") {
                 window.open("trytableVerEE.html", "popupwindow", "width=1920,height=1080");
             }
         }
 
-        
         window.addEventListener("DOMContentLoaded", function() {
             var button = document.getElementById("button");
 
-            button.addEventListener("click", function() {
-                    openPopupHOR();
-                    openPopupVER();
-                    openPopupVEREE();
+            button.addEventListener("dblclick", function() {
+                openPopupHVV();
             });
         });
         
-        
-
-        function openPopup() {
-            window.open("Neue.html","popupwindow","width=1920, height=1080");
-        }
-        
-            window.addEventListener("DOMContentLoaded", function() {
-            var button = document.getElementById("button");
-
-                button.addEventListener("dblclick", function() {
-                    openPopup();
-                })
-            });
-
     </script>
 </body>
 </html>
