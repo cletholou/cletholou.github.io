@@ -124,13 +124,24 @@ table, th, td {
         <th colspan="2">Ungebaut</th>
     </tr>
 </table>
+    
+    <button onclick="exportToExcel()">Exporter vers excel</button>
     <button id="button1" class="button">Neue</button>
-<script>
+    
+<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js">
     
     var startzeit = localStorage.getItem('Startzeit');
     var endzeit = localStorage.getItem('Endzeit');
+    var date = localStorage.getItem('Datum');
     var uhrzeit = startzeit + " / " + endzeit;
     localStorage.setItem("Uhrzeit", uhrzeit)
+
+    function exportToExcel() {
+        var table = document.getElementById("HORTable");
+        var workbook = XLSX.utils.table_to_book(table);
+        var fileName = "tabel" + date + "_" + startzeit + ".xlsx"
+        XLSX.writeFile(workbook, fileName);
+    }
     
     function openPopup() {
         window.open("Neue.html","popupwindow","width=1920, height=1080");
