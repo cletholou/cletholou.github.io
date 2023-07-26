@@ -18,9 +18,9 @@ table, th, td {
 </style>
 </head>
 <body>
- 
+
 <h2>Fehlt table</h2>
- 
+
 <table id="HORTable">
     <tr>
         <th colspan="2">Datum</th>
@@ -32,7 +32,7 @@ table, th, td {
         <th colspan="2">P.A.</th>
     </tr>
     <tr>
-        <th colspan="2">Stückzahl</th>
+        <th colspan="2">Stuckzahl</th>
     </tr>
     <tr>
         <th>2 Kontakthalter</th>
@@ -62,7 +62,7 @@ table, th, td {
         <td>fehlt</td>
     </tr>
     <tr>
-        <th>7 Bültescheibe</th>
+        <th>7 Bultescheibe</th>
         <td>fehlt</td>
     </tr>
     <tr>
@@ -103,7 +103,7 @@ table, th, td {
         <td>fehlt</td>
     </tr>
     <tr>
-        <th>7 Bültescheibe</th>
+        <th>7 Bultescheibe</th>
         <td>fehlt</td>
     </tr>
     <tr>
@@ -124,32 +124,21 @@ table, th, td {
         <th colspan="2">Ungebaut</th>
     </tr>
 </table>
-    
-    <button onclick="exportToExcel()">Exporter vers excel</button>
     <button id="button1" class="button">Neue</button>
-    
-<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js">
-    
+<script>
+
     var startzeit = localStorage.getItem('Startzeit');
     var endzeit = localStorage.getItem('Endzeit');
-    var date = localStorage.getItem('Datum');
     var uhrzeit = startzeit + " / " + endzeit;
     localStorage.setItem("Uhrzeit", uhrzeit)
 
-    function exportToExcel() {
-        var table = document.getElementById("HORTable");
-        var workbook = XLSX.utils.table_to_book(table);
-        var fileName = "tabel" + date + "_" + startzeit + ".xlsx"
-        XLSX.writeFile(workbook, fileName);
-    }
-    
     function openPopup() {
         window.open("Neue.html","popupwindow","width=1920, height=1080");
     }
-    
+
         window.addEventListener("DOMContentLoaded", function() {
         var button1 = document.getElementById("button1");
-            
+
         button1.addEventListener("dblclick", function() {
                 openPopup();
             })
