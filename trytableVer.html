@@ -141,8 +141,7 @@ table, th, td {
             })
         });
 
-        var dataKeys = ['Datum', 'Uhrzeit', 'PA', 'Stuckzahl'];
-        var buttonKeys = ['button1', 'button2', 'button3', 'button4', 'button5', 'button6', 'button7', 'button8', 'button9', 'button10', 'button11', 'button12', 'button13', 'button14', 'button15', 'button16', 'button17', 'button18', 'button19', 'button20', 'button21', 'button22', 'button23'];
+        var dataKeys = ['Datum', 'Uhrzeit', 'PA', 'Stuckzahl','button1', 'button2', 'button3', 'button4', 'button5', 'button6', 'button7', 'button8', 'button9', 'button10', 'button11', 'button12', 'button13', 'button14', 'button15', 'button16', 'button17', 'button18', 'button19', 'button20', 'button21', 'button22', 'button23'];
 
         function createAndFillCell(targetRow, content) {
             var newCell = targetRow.insertCell();
@@ -158,15 +157,6 @@ table, th, td {
                 if (dataValue) {
                     var targetRow = table.rows[i];
                     createAndFillCell(targetRow, dataValue);
-                }
-            }
-
-            for (var i = 0; i < buttonKeys.length; i++) {
-                var buttonKey = buttonKeys[i];
-                var buttonValue = localStorage.getItem(buttonKey);
-                if (buttonValue) {
-                    var targetRow = table.rows[i + dataKeys.length];
-                    createAndFillCell(targetRow, buttonValue);
                 }
             }
         }
