@@ -139,8 +139,6 @@
                     } else {
                         var count = parseInt(button.dataset.count) || 0;
                         if (count === 0) {
-                            disableDecrement(button);
-                            button25.style.backgroundColor = "lightgray";
                         } else {
                         count--;
                         button.dataset.count = count;
@@ -151,9 +149,9 @@
                         } else {
                             button.innerText = button.innerText.slice(0, -2) + count;
                         }
-                        disableDecrement(button);
-                        button25.style.backgroundColor = "lightgray";
                         }
+                    button25.style.backgroundColor = "lightgray";
+                    disableDecrement(button);
                     }
                 localStorage.setItem(button.id, count.toString());
                 });
@@ -167,7 +165,7 @@
         window.addEventListener("DOMContentLoaded", function() {
             var button24 = document.getElementById("button24");
 
-            button24.addEventListener("click", function() {
+            button24.addEventListener("dblclick", function() {
                 openPopupfertig();
             });
         });
