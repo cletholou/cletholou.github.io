@@ -62,20 +62,19 @@
 </head>
 <body>
     <div class="row">
-        <button id="button6" class="button">16 Schraube drehmoment</button>
         <button id="button5" class="button">16 Schraube falsh montiert</button>
-        <button id="button11" class="button">11 Stecker fehlt</button>
+        <button id="button6" class="button">16 Schraube drehmoment</button>
+        <button id="button11" class="button">11 Stecker fehlt</button>*
         <button id="button12" class="button">11 Stecker falsh montiert</button>
         <button id="button13" class="button">3 Clip fehlt</button>
         <button id="button14" class="button">3 Clip drehmoment</button>
         <button id="button25" class="button">Ungebaut</button>
         <button id="button24" class="button">7 Plug falsh montiert</button>
         <button id="button23" class="button">7 Plug fehlt</button>
-
     </div>
     <div class="row">
     <div class="column">
-        <button id="button10" class="button">8 Bütlescheibe</button>
+        <button id="button10" class="button">8 Butlescheibe</button>
         <button id="button9" class="button">14 C-Scheibe</button>
         <button id="button8" class="button">13 D-Scheibe</button>
         <button id="button7" class="button">15 Schraube</button>
@@ -83,11 +82,10 @@
         <button id="button3" class="button">17 Schraube drehmoment</button>
         <button id="button2" class="button">17 Schraube fehlt</button>
         <button id="button1" class="button">2 Kontakthalter</button>
-
     </div>
-    <img class="image" src="cletholou/cletholou.github.io/blob/main/pictures/VERT.EE.jpg" alt="Ma photo" width="850" height="577">
+    <img class="image" src="\\server-fs-3\benutzerdaten$\clement.zakrzewski\Desktop\codes\pictures\VERTEE.jpg" alt="Ma photo" width="850" height="577">
     <div class="column">
-        <button id="button22" class="button">8 Bütlescheibe</button>
+        <button id="button22" class="button">8 Butlescheibe</button>
         <button id="button21" class="button">14 C-Scheibe</button>
         <button id="button20" class="button">13 D-Scheibe</button>
         <button id="button19" class="button">12 U-Scheibe</button>
@@ -105,18 +103,18 @@
 
         var decrementEnabled = false;
         var targetButton = null;
-        
+
         function enableDecrement(button) {
             decrementEnabled = true;
             targetButton = button;
             button.style.backgroundColor = "red";
         }
-        
+
         function disableDecrement(button) {
             decrementEnabled = false;
             targetButton = button;
         }
-        
+
         window.addEventListener("DOMContentLoaded", function() {
             var buttons = document.querySelectorAll("button[id^='button']");
             buttons.forEach(function(button) {
@@ -124,7 +122,7 @@
                 button.innerText = button.innerText.replace(/ \d+$/, "");
                 localStorage.setItem(button.id, "0");
             });
-        
+
             buttons.forEach(function(button) {
                 button.addEventListener("dblclick", function() {
                     if (!decrementEnabled) {
@@ -141,8 +139,6 @@
                     } else {
                         var count = parseInt(button.dataset.count) || 0;
                         if (count === 0) {
-                            disableDecrement(button);
-                            button27.style.backgroundColor = "lightgray";
                         } else {
                         count--;
                         button.dataset.count = count;
@@ -153,34 +149,34 @@
                         } else {
                             button.innerText = button.innerText.slice(0, -2) + count;
                         }
-                        disableDecrement(button);
-                        button27.style.backgroundColor = "lightgray";
                         }
+                    disableDecrement(button);
+                    button27.style.backgroundColor = "lightgray";
                     }
                 localStorage.setItem(button.id, count.toString());
                 });
             });
         });
-        
+
         function openPopupfertig() {
             window.open("Fertig.html", "popupwindow", "width=1920,height=1080");
         }
-     
+
         window.addEventListener("DOMContentLoaded", function() {
             var button26 = document.getElementById("button26");
-   
-            button26.addEventListener("click", function() {
+
+            button26.addEventListener("dblclick", function() {
                 openPopupfertig();
             });
         });
-        
+
         window.addEventListener("DOMContentLoaded", function() {
             var button27 = document.getElementById("button27");
-     
+
             button27.addEventListener("click", function() {
                 enableDecrement(this);
             });
-    });
+        });
 
     </script>
 </body>
