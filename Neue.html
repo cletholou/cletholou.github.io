@@ -66,7 +66,7 @@
 
         var form = document.querySelector('form');
         form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Pour éviter le rechargement de la page
+            event.preventDefault();
             var date = document.getElementById("date").value;
             localStorage.setItem('Datum', date);
             var starthour = document.getElementById("time").value;
