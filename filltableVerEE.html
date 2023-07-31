@@ -22,26 +22,31 @@ table, th, td {
 <h2>Fehlt table</table></h2>
 <table id="VEREETable">
     <tr>
-        <th colspan="2">Datum</th>
+        <th>Datum</th>
+        <td>:</td>
     </tr>
     <tr>
-        <th colspan="2">Uhrzeit</th>
+        <th>Uhrzeit</th>
+        <td>:</td>
     </tr>
     <tr>
-        <th colspan="2">P.A.</th>
+        <th>P.A.</th>
+        <td>:</td>
     </tr>
     <tr>
-        <th colspan="2">Stuckzahl</th>
+        <th>Stuckzahl</th>
+        <td>:</td>
     </tr>
     <tr>
         <th>2 Kontakthalter</th>
         <td>fehlt</td>
     </tr>
     <tr>
-        <th rowspan="2">17 M3x8 ISO Schraube</th>
+        <th>17 M3x8 ISO Schraube</th>
         <td>fehlt</td>
     </tr>
     <tr>
+        <th>17 M3x8 ISO Schraube</th>
         <td>drehmoment</td>
     </tr>
     <tr>
@@ -49,10 +54,11 @@ table, th, td {
         <td>fehlt</td>
     </tr>
     <tr>
-        <th rowspan="2">16 M6x20 ISO Schraube</th>
+        <th>16 M6x20 ISO Schraube</th>
         <td>fehlt</td>
     </tr>
     <tr>
+        <th>16 M6x20 ISO Schraube</th>
         <td>drehmoment</td>
     </tr>
     <tr>
@@ -72,17 +78,19 @@ table, th, td {
         <td>fehlt</td>
     </tr>
     <tr>
-        <th rowspan="2">11 Stecker</th>
+        <th>11 Stecker</th>
         <td>fehlt</td>
     </tr>
     <tr>
+        <th>11 Stecker</th>
         <td>falsh montiert</td>
     </tr>
     <tr>
-        <th rowspan="2">3 Clip</th> 
+        <th>3 Clip</th> 
         <td>fehlt</td>
     </tr>
     <tr>
+        <th>3 Clip</th> 
         <td>falsh montiert</td>
     </tr>
     <tr>
@@ -90,10 +98,11 @@ table, th, td {
         <td>fehlt</td>
     </tr>
     <tr>
-        <th rowspan="2">9 EJOT Schraube</th>
+        <th>9 EJOT Schraube</th>
         <td>fehlt</td>
     </tr>
     <tr>
+        <th>9 EJOT Schraube</th>
         <td>drehmoment</td>
     </tr>
     <tr>
@@ -117,22 +126,50 @@ table, th, td {
         <td>fehlt</td>
     </tr>
     <tr>
-        <th rowspan="2">7 Plug</th>
+        <th>7 Plug</th>
         <td>fehlt</td>
     </tr>
     <tr>
+        <th>7 Plug</th>
         <td>falsh montiert</td>
     </tr>
     <tr>
-        <th colspan="2">Ungebaut</th>
+        <th>Ungebaut</th>
+        <td>:</td>
     </tr>
   </table>
   <button id="button1" class="button">Neue</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 <script>
+
+    function saveTableToExcel(tableId) {
+        var table = document.getElementById("VEREETable");
+        var rows = table.rows;
+        var data = [];
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var cells = row.cells;
+            var rowData = [];
+
+            for (var j = 0; j < cells.length; j++) {
+                rowData.push(cells[j].textContent);
+            }
+        data.push(rowData);
+        }
+        var wb = XLSX.utils.book_new();
+        var ws = XLSX.utils.aoa_to_sheet(data);
+        XLSX.utils.book_append_sheet(wb, ws, "Table");
+
+        var fileName = patrone + "table_" + date + "_" + startzeit + ".xlsx";
+        XLSX.writeFile(wb, fileName)
+    }
   
     var startzeit = localStorage.getItem('Startzeit');
     var endzeit = localStorage.getItem('Endzeit');
+    var date = localStorage.getItem('Datum');
     var uhrzeit = startzeit + " / " + endzeit;
+    var patrone = localStorage.getItem('patrone')
     localStorage.setItem("Uhrzeit", uhrzeit)
   
     function openPopup() {
@@ -147,27 +184,28 @@ table, th, td {
             })
         });
 
-        var dataKeys = ['Datum', 'Uhrzeit', 'PA', 'Stuckzahl','button1', 'button2', 'button3', 'button4', 'button5', 'button6', 'button7', 'button8', 'button9', 'button10', 'button11', 'button12', 'button13', 'button14', 'button15', 'button16', 'button17', 'button18', 'button19', 'button20', 'button21', 'button22', 'button23', 'button24', 'button25'];
+    var dataKeys = ['Datum', 'Uhrzeit', 'PA', 'Stuckzahl','button1', 'button2', 'button3', 'button4', 'button5', 'button6', 'button7', 'button8', 'button9', 'button10', 'button11', 'button12', 'button13', 'button14', 'button15', 'button16', 'button17', 'button18', 'button19', 'button20', 'button21', 'button22', 'button23', 'button24', 'button25'];
 
-        function createAndFillCell(targetRow, content) {
-            var newCell = targetRow.insertCell();
-            newCell.textContent = content;
-        }
+    function createAndFillCell(targetRow, content) {
+        var newCell = targetRow.insertCell();
+        newCell.textContent = content;
+    }
 
-        function populateTable() {
-        var table = document.getElementById('VEREETable');
+    function populateTable() {
+    var table = document.getElementById('VEREETable');
 
-            for (var i = 0; i < dataKeys.length; i++) {
-                var dataKey = dataKeys[i];
-                var dataValue = localStorage.getItem(dataKey);
-                if (dataValue) {
-                    var targetRow = table.rows[i];
-                    createAndFillCell(targetRow, dataValue);
-                }
+        for (var i = 0; i < dataKeys.length; i++) {
+            var dataKey = dataKeys[i];
+            var dataValue = localStorage.getItem(dataKey);
+            if (dataValue) {
+                var targetRow = table.rows[i];
+                createAndFillCell(targetRow, dataValue);
             }
         }
+    }
 
-        populateTable();
+    populateTable();
+    saveTableToExcel('VEREETable');
 
 </script>
 </body>
