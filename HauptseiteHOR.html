@@ -133,8 +133,7 @@
                     }
                 } else {
                     var count = parseInt(button.dataset.count) || 0;
-                    if (count === 0) {
-                    } else {
+                    if (count !== 0) {
                     count--;
                     button.dataset.count = count;
                     if (count ===0 ) {
