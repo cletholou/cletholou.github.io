@@ -24,83 +24,86 @@ table, th, td {
     <tr>
         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
     </tr>
-  </table>
-  <button id="button1" class="button">Neue</button>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</table>
+    <button onclick="exportToCSV()" download="tableau.csv">Exporter vers CSV</button>
+    <button id="button1" class="button">Neue</button>
 <script>
 
     var startzeit = localStorage.getItem('Startzeit');
     var endzeit = localStorage.getItem('Endzeit');
     var date = localStorage.getItem('Datum');
-    var uhrzeit = startzeit + " / " + endzeit;
     var patrone = localStorage.getItem('patrone')
-    localStorage.setItem("Uhrzeit", uhrzeit)
-    
+    var uhrzeit = startzeit + " / " + endzeit;
+    localStorage.setItem('Uhrzeit', uhrzeit);
+    var name = patrone + "_table" + "_"+ date + "_" + startzeit +".csv";
+   
     function exportToCSV() {
-        var table = document.getElementById("VEREETable");
+        var table = document.getElementById('VEREETable');
         var csvContent = [];
-
+  
         for (var i = 0; i < table.rows.length; i++) {
             var rowData = [];
             var row = table.rows[i];
-
-            for (var j = 0; j < cells.length; j++) {
+    
+            for (var j = 0; j < row.cells.length; j++) {
                 rowData.push(row.cells[j].textContent);
             }
+    
         var csvRow = rowData.join(',');
         csvContent.push(csvRow);
         }
-        
-        var csvText = csvContent.join('\n');
-        
-        var blob = new Blob([csvText)], { type: 'text/csv;charset=utf-8;' });
 
+        var csvText = csvContent.join('\n');
+  
+        var blob = new Blob([csvText], { type: 'text/csv;charset=utf-8;' });
+  
         var link = document.createElement('a');
-        link.href = URL.createObject(blob);
-        link.download = name;
+        link.href = URL.createObjectURL(blob);
+        link.download = name; 
         link.style.display = 'none';
         document.body.appendChild(link);
-
+  
         link.click();
-
+  
         document.body.removeChild(link);
     }
-  
+
     function openPopup() {
         window.open("Neue.html","popupwindow","width=1920, height=1080");
     }
-  
-        window.addEventListener("DOMContentLoaded", function() {
-        var button1 = document.getElementById("button1");
-          
+
+    window.addEventListener("DOMContentLoaded", function() {
+    var button1 = document.getElementById("button1");
+
         button1.addEventListener("dblclick", function() {
-                openPopup();
-            })
-        });
+            openPopup();
+        })
+    });
 
     var dataKeys = ['Datum', 'Uhrzeit', 'PA', 'Stuckzahl', 'patrone', 'button1', 'X', 'button8', 'button9', 'button10', 'X', 'X', 'X', 'button7', 'button2', 'button3', 'button4', 'button5', 'button6', 'button11', 'button12', 'button13', 'button14', 'button15', 'button16', 'button17', 'button19', 'button20', 'button21', 'button22', 'X', 'X', 'X', 'button18', 'button23', 'button24', 'button25'];
-
+  
     function createAndFillCell(row, content) {
         var newCell = row.insertCell();
         newCell.textContent = content;
     }
-
+    
     function populateTable() {
-    var table = document.getElementById('VEREETable');
+        var table = document.getElementById('VEREETable');
         var existingRow = table.rows[0];
-
+  
         for (var i = 0; i < dataKeys.length; i++) {
             var dataKey = dataKeys[i];
             var dataValue = localStorage.getItem(dataKey);
             if (dataValue) {
-                existingRow.cells[i].textcontent = dataValue;
+                existingRow.cells[i].textContent = dataValue;
             } else {
-                existingRow.cells[i].textcontent = "";
+                existingRow.cells[i].textContent = "";
+            }
         }
     }
-
+    
     populateTable();
-
+  
 </script>
 </body>
 </html>
