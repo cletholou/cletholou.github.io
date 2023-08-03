@@ -128,8 +128,10 @@
                         button.innerText = button.innerText + " : " + count;
                     } else if (count < 11) {
                         button.innerText = button.innerText.slice(0, -1) + count;
-                    } else {
+                    } else if (count < 101) {
                         button.innerText = button.innerText.slice(0, -2) + count;
+                    } else {
+                        button.innertext = button.innerText.slice(0, -3) + count;
                     }
                 } else {
                     var count = parseInt(button.dataset.count) || 0;
@@ -140,9 +142,10 @@
                         button.innerText = button.innerText.slice(0, -4);
                     } else if (count < 9) {
                         button.innerText = button.innerText.slice(0, -1) + count;
-                    } else {
+                    } else if (count < 99) {
                         button.innerText = button.innerText.slice(0, -2) + count;
-                    }
+                    } else {
+                        button.innerText = button.innerText.slice(0, -3) + count;
                     }
                 button26.style.backgroundColor = "lightgray";
                 disableDecrement(button);
