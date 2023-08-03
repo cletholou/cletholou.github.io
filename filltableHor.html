@@ -22,152 +22,52 @@ table, th, td {
 <h2>Fehlt table</h2>
 
 <table id="HORTable">
-    <tr>
-        <th>Datum</th>
-        <td>:</td>
-    </tr>
-    <tr>
-        <th>Uhrzeit</th>
-        <td>:</td>
-    </tr>
-    <tr>
-        <th>P.A.</th>
-        <td>:</td>
-    </tr>
-    <tr>
-        <th>Stuckzahl</th>
-        <td>:</td>
-    </tr>
-    <tr>
-        <th>2 Kontakthalter</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>16 M6x12 DIN Schraube</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>16 M6x12 DIN Schraube</th>
-        <td>drehmoment</td>
-    </tr>
-    <tr>
-        <th>13 U-Scheibe</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>15 M6x25 DIN Schraube</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>11 D-Scheibe</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>12 C-Scheibe</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>7 Bultescheibe</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>5 Stecker</th> 
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>5 Stecker</th> 
-        <td>falsh montiert</td>
-    </tr>
-    <tr>
-        <th>6 Clip</th> 
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>6 Clip</th> 
-        <td>falsh montiert</td>
-    </tr>
-    <tr>
-        <th>4 Schlosshalter</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>8 EJOT Schraube</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>8 EJOT Schraube</th>
-        <td>drehmoment</td>
-    </tr>
-    <tr>
-        <th>14 M6x16 DIN Schraube</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>11 D-Scheibe</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>12 C-Scheibe</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>7 Bultescheibe</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>18 M5 ISO Schraube</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>18 M5 ISO Schraube</th>
-        <td>drehmoment</td>
-    </tr>
-    <tr>
-        <th>10 Plug</th>
-        <td>fehlt</td>
-    </tr>
-    <tr>
-        <th>10 Plug</th>
-        <td>falsh montiert</td>
-    </tr>
-    <tr>
-        <th>Ungebaut</th>
-        <td>:</td>
-    </tr>
+<tr>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
 </table>
+<button onclick="exportToCSV()" download="tableau.csv">Exporter vers CSV</button>
     <button id="button1" class="button">Neue</button>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 <script>
-
-    function saveTableToExcel(tableId) {
-        var table = document.getElementById("HORTable");
-        var rows = table.rows;
-        var data = [];
-
-        for (var i = 0; i < rows.length; i++) {
-            var row = rows[i];
-            var cells = row.cells;
-            var rowData = [];
-
-            for (var j = 0; j < cells.length; j++) {
-                rowData.push(cells[j].textContent);
-            }
-        data.push(rowData);
-        }
-        var wb = XLSX.utils.book_new();
-        var ws = XLSX.utils.aoa_to_sheet(data);
-        XLSX.utils.book_append_sheet(wb, ws, "Table");
-
-        var fileName = patrone + "table_" + date + "_" + startzeit + ".xlsx";
-        XLSX.writeFile(wb, fileName)
-    }
 
     var startzeit = localStorage.getItem('Startzeit');
     var endzeit = localStorage.getItem('Endzeit');
     var date = localStorage.getItem('Datum');
     var patrone = localStorage.getItem('patrone')
     var uhrzeit = startzeit + " / " + endzeit;
-    localStorage.setItem("Uhrzeit", uhrzeit)
+    localStorage.setItem('Uhrzeit', uhrzeit);
+    var name = patrone + "_table" + "_"+ date + "_" + startzeit +".csv";
+
+    function exportToCSV() {
+        var table = document.getElementById('HORTable');
+        var csvContent = [];
+  
+        for (var i = 0; i < table.rows.length; i++) {
+            var rowData = [];
+            var row = table.rows[i];
+    
+        for (var j = 0; j < row.cells.length; j++) {
+            rowData.push(row.cells[j].textContent);
+    }
+    
+        var csvRow = rowData.join(',');
+        csvContent.push(csvRow);
+    }
+
+        var csvText = csvContent.join('\n');
+  
+        var blob = new Blob([csvText], { type: 'text/csv;charset=utf-8;' });
+  
+        var link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = name; 
+        link.style.display = 'none';
+        document.body.appendChild(link);
+  
+        link.click();
+  
+        document.body.removeChild(link);
+    }
 
     function openPopup() {
         window.open("Neue.html","popupwindow","width=1920, height=1080");
@@ -181,28 +81,29 @@ table, th, td {
         })
     });
 
-    var dataKeys = ['Datum', 'Uhrzeit', 'PA', 'Stuckzahl','button1', 'button2', 'button3', 'button4', 'button5', 'button6', 'button7', 'button8', 'button9', 'button10', 'button11', 'button12', 'button13', 'button14', 'button15', 'button16', 'button17', 'button18', 'button19', 'button20', 'button21', 'button22', 'button23', 'button24'];
- 
-    function createAndFillCell(targetRow, content) {
-        var newCell = targetRow.insertCell();
+    var dataKeys = ['Datum', 'Uhrzeit', 'PA', 'Stuckzahl', 'patrone', 'button1', 'button4', 'button6', 'button7', 'button8', 'button2', 'button3', 'button5', 'X', 'X', 'X', 'X', 'X', 'X', 'button9', 'button10', 'button11', 'button12', 'button13', 'button14', 'button15', 'X', 'button17', 'button18', 'button19', 'button16', 'button20', 'button21', 'X', 'button22', 'button23', 'button24'];
+
+    function createAndFillCell(row, content) {
+        var newCell = row.insertCell();
         newCell.textContent = content;
     }
-
+ 
     function populateTable() {
-    var table = document.getElementById('HORTable');
+        var table = document.getElementById('HORTable');
+        var existingRow = table.rows[0];
 
         for (var i = 0; i < dataKeys.length; i++) {
             var dataKey = dataKeys[i];
             var dataValue = localStorage.getItem(dataKey);
             if (dataValue) {
-                var targetRow = table.rows[i];
-                createAndFillCell(targetRow, dataValue);
+                existingRow.cells[i].textContent = dataValue;
+            } else {
+                existingRow.cells[i].textContent = "";
             }
         }
     }
 
     populateTable();
-    saveTableToExcel('HORTable');
 
 </script>
 </body>
