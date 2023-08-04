@@ -119,7 +119,7 @@
         });
 
         buttons.forEach(function(button) {
-            button.addEventListener("dblclick", function() {
+            button.addEventListener("click", function() {
                 if (!decrementEnabled) {
                     var count = parseInt(button.dataset.count) || 0;
                     count++;
